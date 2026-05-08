@@ -106,7 +106,7 @@ function _createToys() {
         const toys = [{
             _id: 't101',
             name: 'Talking Doll',
-            imgUrl: 'https://images.pexels.com/photos/30274108/pexels-photo-30274108.jpeg',
+            // imgUrl: 'https://images.pexels.com/photos/30274108/pexels-photo-30274108.jpeg',
             price: 123,
             labels: ['Doll', 'Battery Powered', 'Baby'],
             createdAt: 1631031801011,

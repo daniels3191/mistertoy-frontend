@@ -80,6 +80,7 @@ export function ToyFilter() {
             </form>
 
             <div className="sort-by">
+                <h3>Sort By</h3>
                 <div className="sort-field">
                     <label className="tag" >
                         <span>Name</span>
