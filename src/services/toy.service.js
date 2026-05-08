@@ -20,13 +20,13 @@ window.cs = toyService
 function query(filterBy = {}) {
     return storageService.query(TOY_KEY)
         .then(toys => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                toys = toys.filter(toy => regExp.test(toy.txt))
+            if (filterBy.name) {
+                const regExp = new RegExp(filterBy.name, 'i')
+                toys = toys.filter(toy => regExp.test(toy.name))
             }
 
-            if (filterBy.importance) {
-                toys = toys.filter(toy => toy.importance >= filterBy.importance)
+            if (filterBy.price) {
+                toys = toys.filter(toy => toy.price >= filterBy.price)
             }
 
             return toys
@@ -47,7 +47,7 @@ function remove(toyId) {
 
 function save(toy) {
     if (toy._id) {
-        //Toy - updatable fields
+        // TOY - updatable fields
         toy.updatedAt = Date.now()
         return storageService.put(TOY_KEY, toy)
     } else {
@@ -57,12 +57,12 @@ function save(toy) {
     }
 }
 
-function getEmptyToy(txt = '', importance = 5) {
-    return { txt, importance, isDone: false }
+function getEmptyToy(name = '', price = 100) {
+    return { name, price }
 }
 
 function getDefaultFilter() {
-    return { txt: '', importance: 0 }
+    return { name: '', price: 0 }
 }
 
 function getFilterFromSearchParams(searchParams) {
@@ -88,12 +88,40 @@ function getImportanceStats() {
 function _createToys() {
     let toys = utilService.loadFromStorage(TOY_KEY)
     if (!toys || !toys.length) {
-        toys = []
-        const txts = ['Learn React', 'Master CSS', 'Practice Redux']
-        for (let i = 0; i < 20; i++) {
-            const txt = txts[utilService.getRandomIntInclusive(0, txts.length - 1)]
-            toys.push(_createToy(txt + (i + 1), utilService.getRandomIntInclusive(1, 10)))
-        }
+        // toys = []
+        // const txts = ['Learn React', 'Master CSS', 'Practice Redux']
+        // for (let i = 0; i < 20; i++) {
+        //     const txt = txts[utilService.getRandomIntInclusive(0, txts.length - 1)]
+        //     toys.push(_createToy(txt + (i + 1), utilService.getRandomIntInclusive(1, 10)))
+        // }
+        const toys = [{
+            _id: 't101',
+            name: 'Talking Doll',
+            // imgUrl: 'hardcoded-url-for-now',
+            price: 123,
+            labels: ['Doll', 'Battery Powered', 'Baby'],
+            createdAt: 1631031801011,
+            inStock: true,
+        },
+        {
+            _id: 't102',
+            name: 'Remote Car',
+            // imgUrl: 'hardcoded-url-for-now',
+            price: 220,
+            labels: ['On wheels', 'Battery Powered'],
+            createdAt: 163103180101,
+            inStock: false,
+        },
+        {
+            _id: 't103',
+            name: 'Wood Kitchen',
+            // imgUrl: 'hardcoded-url-for-now',
+            price: 550,
+            labels: ['Art'],
+            createdAt: 163103122101,
+            inStock: true,
+        }]
+
         utilService.saveToStorage(TOY_KEY, toys)
     }
 }
