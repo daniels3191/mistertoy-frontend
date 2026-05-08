@@ -66,8 +66,8 @@ function save(toy) {
     }
 }
 
-function getEmptyToy(name = '', price = 100) {
-    return { name, price }
+function getEmptyToy(name = '', price = 100, inStock = false) {
+    return { name, price, inStock }
 }
 
 function getDefaultFilter() {
@@ -106,7 +106,7 @@ function _createToys() {
         const toys = [{
             _id: 't101',
             name: 'Talking Doll',
-            // imgUrl: 'hardcoded-url-for-now',
+            imgUrl: 'https://images.pexels.com/photos/30274108/pexels-photo-30274108.jpeg',
             price: 123,
             labels: ['Doll', 'Battery Powered', 'Baby'],
             createdAt: 1631031801011,

@@ -37,12 +37,13 @@ export function ToyDetails() {
         <section className="toy-details">
             <h1 >{toy.name}</h1>
 
-            <h1>Toy price: {toy.price}</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim rem accusantium, itaque ut voluptates quo? Vitae animi maiores nisi, assumenda molestias odit provident quaerat accusamus, reprehenderit impedit, possimus est ad?</p>
+            <h1>Price: {toy.price}</h1>
+            <h1 style={{color: toy.inStock?  '' : 'red'}}>In Stock? {toy.inStock?  'Yes' : 'No'}</h1>
+
             <button onClick={onBack}>Back to list</button>
             <div>
                 <Link to={`/toy/${toy.nextToyId}`}>Next Toy</Link> |
-                <Link to={`/toy/${toy.prevToyId}`}>Previous Toy</Link>
+                <Link to={`/toy/${toy.prevToyId}`}> Previous Toy</Link>
             </div>
         </section>
     )

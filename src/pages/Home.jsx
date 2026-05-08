@@ -8,9 +8,9 @@ export function Home() {
 
     return (
         <section className="home">
-            <h1>Todo's R Us!</h1>
+            <h1>Toy's R Us!</h1>
             <ToggleButton val={isOn} setVal={setIsOn} />
-            {isOn && <img src="../assets/img/todo.png" alt="" />}
+            {isOn && <img src="https://t4.ftcdn.net/jpg/05/36/96/93/240_F_536969308_ISujy0XpgP9IjFUHZK2DcBPuPzcAi6lO.jpg" alt="" />}
         </section>
     )
 }

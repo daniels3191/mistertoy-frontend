@@ -54,20 +54,20 @@ export function ToyEdit() {
             })
     }
 
-    const { txt, importance, isDone } = toyToEdit
-
+    const { name, price, inStock } = toyToEdit
+    
     return (
         <section className="toy-edit">
             <form onSubmit={onSaveToy} >
-                <label htmlFor="txt">Text:</label>
-                <input onChange={handleChange} value={txt} type="text" name="txt" id="txt" />
+                <label htmlFor="name">Name:</label>
+                <input onChange={handleChange} value={name} type="name" name="name" id="name" />
 
-                <label htmlFor="importance">Importance:</label>
-                <input onChange={handleChange} value={importance} type="number" name="importance" id="importance" />
+                <label htmlFor="price">Price:</label>
+                <input onChange={handleChange} value={price} type="number" name="price" id="price" />
 
-                <label htmlFor="isDone">isDone:</label>
-                <input onChange={handleChange} value={isDone} type="checkbox" name="isDone" id="isDone" />
-
+                <label htmlFor="inStock">inStock:</label>
+                <input onChange={handleChange}  type="checkbox" name="inStock" id="inStock" 
+                 checked={!!inStock}/>
 
                 <button>Save</button>
             </form>

@@ -30,7 +30,7 @@ export function AppHeader() {
         <header className="app-header full main-layout">
             <section className="header-container">
                 <h1>React Toy App</h1>
-                {user ? (
+                {/* {user ? (
                     < section >
                         <Link to={`/user/${user._id}`}>Hello {user.fullname}</Link>
                         <button onClick={onLogout}>Logout</button>
@@ -39,12 +39,12 @@ export function AppHeader() {
                     <section>
                         <LoginSignup onSetUser={onSetUser} />
                     </section>
-                )}
+                )} */}
                 <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
-                    <NavLink to="/about" >About</NavLink>
+                    {/* <NavLink to="/about" >About</NavLink> */}
                     <NavLink to="/toy" >Toys</NavLink>
-                    <NavLink to="/dashboard" >Dashboard</NavLink>
+                    {/* <NavLink to="/dashboard" >Dashboard</NavLink> */}
                 </nav>
             </section>
             <UserMsg />

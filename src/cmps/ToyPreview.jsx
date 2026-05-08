@@ -5,7 +5,7 @@ export function ToyPreview({ toy }) {
                 Toy: {toy.name}
             </h2>
             <h4>Toy Price: {toy.price}</h4>
-            {/* <img src={`../assets/img/${'toy'}.png`} alt="" /> */}
+            <img src={toy.imgUrl} alt="" />
         </article>
     )
 }
