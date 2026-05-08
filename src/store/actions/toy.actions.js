@@ -36,7 +36,7 @@ export function saveToy(toy, isToggle = false) {
 export function getFilteredToys(state) {
     const filterBy = state.toyModule.filterBy
     let toys = [...state.toyModule.toys]
-
+    
     if (filterBy.name) {
         const regExp = new RegExp(filterBy.name, 'i')
         toys = toys.filter(toy => regExp.test(toy.name))
@@ -48,6 +48,15 @@ export function getFilteredToys(state) {
     if (filterBy.status) {
         toys = toys.filter(toy => filterBy.status === 'inStock'? toy.inStock : !toy.inStock)
     }
+   if (filterBy.sortField === 'price' || filterBy.sortField === 'createdAt') {
+        const { sortField } = filterBy
+
+        toys.sort((toy1, toy2) => 
+            (toy1[sortField] - toy2[sortField]) * filterBy.sortDir)
+    } else if (filterBy.sortField === 'name') {
+        toys.sort((toy1, toy2) => 
+            (toy1.name.localeCompare(toy2.name)) * filterBy.sortDir)
+    } 
 
     return toys
 }

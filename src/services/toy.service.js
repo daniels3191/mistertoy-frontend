@@ -28,6 +28,15 @@ function query(filterBy = {}) {
             if (filterBy.price) {
                 toys = toys.filter(toy => toy.price >= filterBy.price)
             }
+            if (filterBy.sortField === 'price' || filterBy.sortField === 'createdAt') {
+                const { sortField } = filterBy
+
+                toys.sort((toy1, toy2) =>
+                    (toy1[sortField] - toy2[sortField]) * filterBy.sortDir)
+            } else if (filterBy.sortField === 'name') {
+                toys.sort((toy1, toy2) =>
+                    (toy1.name.localeCompare(toy2.name)) * filterBy.sortDir)
+            }
 
             return toys
         })
@@ -105,7 +114,7 @@ function _createToys() {
         },
         {
             _id: 't102',
-            name: 'Remote Car',
+            name: 'A Remote Car',
             // imgUrl: 'hardcoded-url-for-now',
             price: 220,
             labels: ['On wheels', 'Battery Powered'],

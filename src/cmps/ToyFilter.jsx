@@ -21,6 +21,7 @@ export function ToyFilter() {
     }, [filterByToEdit])
 
     function handleChange({ target }) {
+        
         const field = target.name
         let value = target.value
 
@@ -50,7 +51,7 @@ export function ToyFilter() {
         dispatch({ type: SET_FILTER_BY, filterBy })
     }
 
-        // Optional support for LAZY Filtering with a button
+    // Optional support for LAZY Filtering with a button
     function onSubmitFilter(ev) {
         ev.preventDefault()
         onSetFilterBy(filterByToEdit)
@@ -77,6 +78,66 @@ export function ToyFilter() {
 
                 <button hidden>Set Filter</button>
             </form>
+
+            <div className="sort-by">
+                <div className="sort-field">
+                    <label className="tag" >
+                        <span>Name</span>
+                        <input
+                            type="radio"
+                            name="sortField"
+                            value="name"
+                            checked={filterByToEdit.sortField === 'name'}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label className="tag" >
+                        <span>Price</span>
+                        <input
+                            type="radio"
+                            name="sortField"
+                            value="price"
+                            checked={filterByToEdit.sortField === 'price'}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label className="tag" >
+                        <span>Created At</span>
+                        <input
+                            type="radio"
+                            name="sortField"
+                            value="createdAt"
+                            checked={filterByToEdit.sortField === 'createdAt'}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+
+                <div className="sort-dir">
+                    <label className="tag" >
+                        <span>Asce</span>
+                        <input
+                            type="radio"
+                            name="sortDir"
+                            value="1"
+                            checked={filterByToEdit.sortDir === "1"}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label className="tag" >
+                        <span>Desc</span>
+                        <input
+                            type="radio"
+                            name="sortDir"
+                            value="-1"
+                            onChange={handleChange}
+                            checked={filterByToEdit.sortDir === "-1"}
+                        />
+                    </label>
+                </div>
+
+                {/* <button onClick={resetSort}>Clear Sort</button> */}
+            </div>
         </section>
     )
 }
